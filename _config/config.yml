@@ -31,7 +31,7 @@ DNADesign\Elemental\Models\ElementalArea:
     - A2nt\ElementalBasics\Extensions\ElementalArea
 
 DNADesign\Elemental\Models\BaseElement:
-  default_global_elements: true
+  default_global_elements: false
   extensions:
     - A2nt\ElementalBasics\Extensions\BaseElementEx
     - A2nt\ElementalBasics\Extensions\ElementRows
