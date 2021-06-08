@@ -1,10 +1,10 @@
 <% if $ShowTitle || $Content %>
-    <div class="slider-caption">
-        <% if $ShowTitle %>
-            <h2 class="element__title">$Title</h2>
-        <% end_if %>
-        <% if $Content %><div class="element__html typography">$Content</div><% end_if %>
-    </div>
+    <% if $ShowTitle %>
+        <h2 class="element__title">$Title</h2>
+    <% end_if %>
+    <% if $Content %>
+        <div class="element__html typography">$Content</div>
+    <% end_if %>
 <% end_if %>
 
 <% if $SlideShow %>
