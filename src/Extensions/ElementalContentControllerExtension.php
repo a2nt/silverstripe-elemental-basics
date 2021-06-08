@@ -1,8 +1,7 @@
 <?php
 
 
-namespace A2nt\ElementalBasics\Elements;
-
+namespace A2nt\ElementalBasics\Extensions;
 
 use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\CMS\Model\SiteTree;

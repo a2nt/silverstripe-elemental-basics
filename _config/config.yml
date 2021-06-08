@@ -1,3 +1,61 @@
 ---
 Name: elemental-basics
+After:
+  - elemental
+  - elemental-list
+  - elementalvirtual
+  - webapp-base-extensions
 ---
+
+# User Forms module
+DNADesign\ElementalUserForms\Model\ElementForm:
+  extensions:
+    - A2nt\ElementalBasics\Extensions\UserDefinedFormExtension
+
+SilverStripe\UserForms\Model\UserDefinedForm:
+  show_in_sitetree: false
+  can_be_root: false
+  extensions:
+    - A2nt\ElementalBasics\Extensions\UserDefinedFormExtension
+##################
+
+SilverStripe\CMS\Controllers\ContentController:
+  extensions:
+    - DNADesign\Elemental\Extensions\ElementalContentControllerExtension
+    - A2nt\ElementalBasics\Extensions\ElementalContentControllerExtension
+  url_handlers:
+    'element/$ID!': 'handleElement'
+
+DNADesign\Elemental\Models\ElementalArea:
+  extensions:
+    - A2nt\ElementalBasics\Extensions\ElementalArea
+
+DNADesign\Elemental\Models\BaseElement:
+  default_global_elements: true
+  extensions:
+    - A2nt\ElementalBasics\Extensions\BaseElementEx
+    - A2nt\ElementalBasics\Extensions\ElementRows
+
+DNADesign\ElementalList\Model\ElementList:
+  inline_editable: false
+  default_global_elements: false
+  extensions:
+    - A2nt\ElementalBasics\Extensions\ElementListExtension
+
+A2nt\ElementalBasics\Elements\AccordionElement:
+  allowed_elements:
+    - DNADesign\Elemental\Models\ElementContent
+
+DNADesign\Elemental\Models\ElementContent:
+  default_global_elements: false
+  inline_editable: false
+  extensions:
+    - A2nt\ElementalBasics\Extensions\ElementContentWidget
+  frontend_searchable_fields:
+    - 'Title:PartialMatch'
+    - 'HTML:PartialMatch'
+
+Dynamic\Elements\Image\Elements\ElementImage:
+  inline_editable: false
+  extensions:
+    - A2nt\ElementalBasics\Extensions\ElementImageWidget
