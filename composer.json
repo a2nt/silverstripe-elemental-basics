@@ -1,0 +1,34 @@
+{
+    "name": "a2nt/silverstripe-elemental-basics",
+    "description": "Some useful elemental blocks",
+    "type": "silverstripe-vendormodule",
+    "keywords": [
+        "silverstripe",
+        "elemental"
+    ],
+    "license": "BSD-3-Clause",
+    "authors": [{
+        "name": "Tony Air",
+        "email": "tony@twma.pro"
+    }],
+    "minimum-stability": "dev",
+    "require": {
+        "silverstripe/cms": "^4",
+        "dnadesign/silverstripe-elemental": "*",
+        "dnadesign/silverstripe-elemental-list": "*",
+        "betterbrief/silverstripe-googlemapfield": "*",
+        "symbiote/silverstripe-gridfieldextensions": "*",
+        "dynamic/silverstripe-elemental-flexslider": "*",
+        "dynamic/silverstripe-elemental-image": "*",
+        "sheadawson/silverstripe-linkable": "*",
+        "a2nt/silverstripe-mapboxfield": "dev-master",
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "A2nt\\ElementalBasics\\": "src/"
+        }
+    }
+}
