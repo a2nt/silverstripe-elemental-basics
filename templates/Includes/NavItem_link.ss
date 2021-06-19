@@ -8,5 +8,5 @@
 	    <i class="fa-icon $BlockIcon"></i>
 	<% end_if %>
     $MenuTitle.XML
-    <% if $isCurrent || $isSection %><i class="sr-only">(current)</i><% end_if %>
+    <% if $isCurrent || $isSection %><i class="visually-hidden">(current)</i><% end_if %>
 </a>
