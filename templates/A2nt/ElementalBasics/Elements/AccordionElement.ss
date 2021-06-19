@@ -3,7 +3,5 @@
 <% end_if %>
 
 <div class="element__content" data-listelement-count="{$Elements.Elements.Count}">
-	<div id="ElementAccordion{$Elements.ID}" class="accordion">
-	    $Accordion
-	</div>
+	$Accordion
 </div>

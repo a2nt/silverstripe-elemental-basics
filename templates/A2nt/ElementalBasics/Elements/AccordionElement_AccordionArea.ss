@@ -1,25 +1,26 @@
 <% if $ElementFilteredControllers %>
+<div id="ElementAccordion{$ID}" class="accordion">
 	<% loop $ElementFilteredControllers %>
-		<div class="card">
-			<div
-				id="ElementHeader{$ID}"
-				class="card-header accordion-header a h4"
-				data-bs-toggle="collapse"
-				data-bs-target="#ElementContent{$ID}"
-				aria-expanded="false"
-				aria-controls="ElementContent{$ID}"
-			>
-				$Title
+		<div class="accordion-item">
+			<div id="ElementHeader{$ID}" class="accordion-header h4">
+				<div
+					data-bs-toggle="collapse"
+					data-bs-target="#ElementContent{$ID}"
+					aria-expanded="false"
+					aria-controls="ElementContent{$ID}"
+					class="accordion-button"
+				>$Title</div>
 			</div>
 
 			<div
 				id="ElementContent{$ID}"
-				class="accordion-content collapse"
+				class="accordion-collapse collapse"
 				aria-labelledby="ElementHeader{$ID}"
 				data-bs-parent="#ElementAccordion{$Parent.ID}"
 			>
-				$Me
+				<div class="accordion-body">$Me</div>
 			</div>
 		</div>
 	<% end_loop %>
+</div>
 <% end_if %>
