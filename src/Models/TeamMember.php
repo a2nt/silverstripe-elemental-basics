@@ -11,7 +11,7 @@ namespace A2nt\ElementalBasics\Models;
 use SilverStripe\Assets\Image;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Versioned\Versioned;
-use App\Extensions\SocialExtension;
+use A2nt\CMSNiceties\Extensions\SocialExtension;
 
 class TeamMember extends DataObject
 {

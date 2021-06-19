@@ -4,7 +4,7 @@
 namespace A2nt\ElementalBasics\Controllers;
 
 use DNADesign\Elemental\Controllers\ElementController;
-use App\Templates\DeferredRequirements;
+use A2nt\CMSNiceties\Templates\DeferredRequirements;
 
 class MapElementController extends ElementController
 {
