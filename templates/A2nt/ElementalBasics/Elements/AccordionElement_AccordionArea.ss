@@ -3,13 +3,13 @@
 	<% loop $ElementFilteredControllers %>
 		<div class="accordion-item">
 			<div id="ElementHeader{$ID}" class="accordion-header h4">
-				<div
+				<button
 					data-bs-toggle="collapse"
 					data-bs-target="#ElementContent{$ID}"
 					aria-expanded="false"
 					aria-controls="ElementContent{$ID}"
 					class="accordion-button"
-				>$Title</div>
+				>$Title</button>
 			</div>
 
 			<div
