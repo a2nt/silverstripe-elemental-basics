@@ -15,6 +15,7 @@ use SilverStripe\Forms\TextareaField;
 
 class CustomSnippetElement extends ElementContent
 {
+    private static $icon = 'font-icon-external-link';
     private static $singular_name = 'Custom Snippet';
 
     private static $plural_name = 'Custom Snippets';

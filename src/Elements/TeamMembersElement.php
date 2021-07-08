@@ -7,11 +7,13 @@
  */
 
 namespace A2nt\ElementalBasics\Elements;
+
 use DNADesign\Elemental\Models\BaseElement;
 use A2nt\ElementalBasics\Models\TeamMember;
 
 class TeamMembersElement extends BaseElement
 {
+    private static $icon = 'font-icon-menu-security';
     private static $singular_name = 'Team Members';
 
     private static $plural_name = 'Team Members';
@@ -25,6 +27,6 @@ class TeamMembersElement extends BaseElement
 
     public function Members()
     {
-        return TeamMember::get()->sort('RAND()');
+        return TeamMember::get();
     }
 }

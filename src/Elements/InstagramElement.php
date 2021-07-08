@@ -8,12 +8,12 @@
 
 namespace A2nt\ElementalBasics\Elements;
 
-
 use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\Core\Convert;
 
 class InstagramElement extends BaseElement
 {
+    private static $icon = 'font-icon-menu-files';
     private static $singular_name = 'Instagram';
 
     private static $plural_name = 'Instagram Elements';
@@ -24,15 +24,15 @@ class InstagramElement extends BaseElement
 
     private static $db = [
         'Username' => 'Varchar(255)',
-	    'Tag' => 'Varchar(255)',
-	    'DisplayProfile' => 'Boolean(0)',
-	    'DisplayBiography' => 'Boolean(0)',
-	    'DisplayGallery' => 'Boolean(0)',
-	    'DisplayCaptions' => 'Boolean(0)',
+        'Tag' => 'Varchar(255)',
+        'DisplayProfile' => 'Boolean(0)',
+        'DisplayBiography' => 'Boolean(0)',
+        'DisplayGallery' => 'Boolean(0)',
+        'DisplayCaptions' => 'Boolean(0)',
     ];
 
     private static $defaults = [
-    	'DisplayGallery' => true,
+        'DisplayGallery' => true,
     ];
 
     public function getType()
@@ -45,14 +45,14 @@ class InstagramElement extends BaseElement
      */
     public function getAttributes(): array
     {
-    	return [
-			'data-username' => $this->Username,
-		    'data-display-profile' => $this->DisplayProfile,
-		    'data-display-biography' => $this->DisplayBiography,
-			'data-display-gallery' => $this->DisplayGallery,
-			'data-display-captions' => $this->DisplayCaptions,
-		    'data-items' => 12,
-	    ];
+        return [
+            'data-username' => $this->Username,
+            'data-display-profile' => $this->DisplayProfile,
+            'data-display-biography' => $this->DisplayBiography,
+            'data-display-gallery' => $this->DisplayGallery,
+            'data-display-captions' => $this->DisplayCaptions,
+            'data-items' => 12,
+        ];
     }
     /**
      * Custom attributes to process.
@@ -63,7 +63,7 @@ class InstagramElement extends BaseElement
      */
     public function AttributesHTML($attributes = null): string
     {
-    	if (!$attributes) {
+        if (!$attributes) {
             $attributes = $this->getAttributes();
         }
 
@@ -93,11 +93,11 @@ class InstagramElement extends BaseElement
 
     public function FeedLink()
     {
-	    return 'https://www.instagram.com/'.($this->Username ? $this->Username : 'explore/tags/'.$this->Tag).'/';
+        return 'https://www.instagram.com/'.($this->Username ? $this->Username : 'explore/tags/'.$this->Tag).'/';
     }
 
     public function FeedTitle()
     {
-    	return ($this->Username ? '@'.$this->Username : '#'.$this->Tag);
+        return ($this->Username ? '@'.$this->Username : '#'.$this->Tag);
     }
 }

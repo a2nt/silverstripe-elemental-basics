@@ -12,6 +12,7 @@ use DNADesign\ElementalList\Model\ElementList;
 
 class AccordionElement extends ElementList
 {
+    private static $icon = 'font-icon-block-file-list';
     private static $singular_name = 'Accordion Element';
 
     private static $plural_name = 'Accordion Element';
