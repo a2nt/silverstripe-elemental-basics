@@ -2,7 +2,7 @@
 <div id="ElementAccordion{$ID}" class="accordion">
 	<% loop $ElementFilteredControllers %>
 		<div class="accordion-item">
-			<div id="ElementHeader{$ID}" class="accordion-header h4">
+			<div id="ElementHeader{$ID}" class="accordion-header">
 				<button
 					data-bs-toggle="collapse"
 					data-bs-target="#ElementContent{$ID}"
