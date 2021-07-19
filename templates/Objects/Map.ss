@@ -1,5 +1,5 @@
 <div
-	class="mapAPI-map-container"
+	class="js-mapapi mapAPI-map-container"
 	data-map-zoom="$MapZoom"
 	data-key="$MapAPIKey"
 	data-map-style="<% if $MapStyle %>$MapStyle.XML<% else %>$SiteConfig.MapStyle.XML<% end_if %>"
