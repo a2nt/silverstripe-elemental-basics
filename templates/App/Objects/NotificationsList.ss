@@ -22,7 +22,7 @@
                     <% end_with %>
                 <% end_if %>
 
-                <b class="btn btn-danger btn-close" data-dismiss="alert" aria-label="Close">
+                <b class="btn btn-danger btn-close" data-bs-dismiss="alert" aria-label="Close">
                     <i class="fas fa-times"></i>
                 </b>
             </div>
