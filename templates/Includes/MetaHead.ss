@@ -11,6 +11,10 @@ $MetaTags
 <meta property="og:site_name" content="{$SiteConfig.Title}" />
 <meta property="og:locale" content="$ContentLocale.ATT" />
 
+<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
+
 <% if $MetaTitle %>
 	<meta property="og:title" content="{$MetaTitle} - {$SiteConfig.Title}" />
 	<meta property="og:image:alt" content="{$MetaTitle}" />
