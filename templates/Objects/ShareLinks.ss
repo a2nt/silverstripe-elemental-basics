@@ -1,5 +1,6 @@
 <div class="sc-links sc-links-share">
 	<a
+		target="_blank"
 		href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site $Link"
 	>
 		<i class="fa fas fa-envelope"></i>
