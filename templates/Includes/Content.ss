@@ -4,6 +4,14 @@
     <% end_if %>
 
     <% if $CurrentElement %>
+        <div class="element page-content-element">
+          <div class="element_container">
+            <div class="$DefaultContainer">
+                <div class="typography">$Content</div>
+            </div>
+          </div>
+        </div>
+    
         <div class="current-element">
             $CurrentElement
         </div>
