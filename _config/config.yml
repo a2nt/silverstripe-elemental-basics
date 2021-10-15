@@ -59,3 +59,6 @@ Dynamic\Elements\Image\Elements\ElementImage:
   inline_editable: false
   extensions:
     - A2nt\ElementalBasics\Extensions\ElementImageWidget
+
+DNADesign\ElementalVirtual\Model\ElementVirtual:
+  controller_template: VirtualElementHolder
