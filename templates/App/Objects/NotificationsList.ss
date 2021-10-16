@@ -2,19 +2,19 @@
     <div class="notifications-list">
     <% loop $NotificationsToday %>
         <div class="alert alert-warning">
-            <div class="container">
+            <div class="alert__container container">
                 <% if $DisplayTitle && $Title %>
-                    <h2>$Title</h2>
+                    <h2 class="alert__title">$Title</h2>
                 <% end_if %>
 
-                <div class="typography">
+                <div class="alert__html typography">
                     $Content
                 </div>
 
                 <% if $TargetLink %>
                     <% with $TargetLink %>
                         <a
-                            class="alert-link" href="$LinkURL"
+                            class="alert__link" href="$LinkURL"
                             <% if $OpenInNewWindow %> target="_blank"<% end_if %>
                         >
                             $Title
@@ -22,9 +22,13 @@
                     <% end_with %>
                 <% end_if %>
 
-                <b class="btn btn-danger btn-close" data-bs-dismiss="alert" aria-label="Close">
+                <button
+                    type="button"
+                    class="alert__close btn btn-danger btn-close"
+                    data-bs-dismiss="alert" aria-label="Close"
+                >
                     <i class="fas fa-times"></i>
-                </b>
+                </button>
             </div>
         </div>
     <% end_loop %>
