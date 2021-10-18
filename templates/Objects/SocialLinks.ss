@@ -29,4 +29,10 @@
             <i class="visually-hidden">Twitter</i>
         </a>
     <% end_if %>
+    <% if $Youtube %>
+        <a href="$Youtube.LinkURL" title="YouTube" rel="noreferrer" target="_blank">
+            <i class="fab fa-youtube"></i>
+            <i class="visually-hidden">YouTube</i>
+        </a>
+    <% end_if %>
 </div>
