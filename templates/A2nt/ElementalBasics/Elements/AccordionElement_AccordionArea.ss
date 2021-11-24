@@ -8,7 +8,7 @@
 					data-bs-target="#ElementContent{$ID}"
 					aria-expanded="false"
 					aria-controls="ElementContent{$ID}"
-					class="accordion-button"
+					class="accordion-button collapsed"
 				>$Title</button>
 			</div>
 
