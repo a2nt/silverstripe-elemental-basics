@@ -84,6 +84,8 @@ class MapPin extends DataObject
             MapboxField::create('Map', 'Choose a location', 'Lat', 'Lng'),
         ]);
 
+        $this->extend('updateMapPinFields', $fields);
+
         return $fields;
     }
 
