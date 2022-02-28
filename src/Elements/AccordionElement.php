@@ -9,6 +9,7 @@
 namespace A2nt\ElementalBasics\Elements;
 
 use DNADesign\ElementalList\Model\ElementList;
+use SilverStripe\Forms\CheckboxField;
 
 class AccordionElement extends ElementList
 {
@@ -21,6 +22,11 @@ class AccordionElement extends ElementList
 
     private static $table_name = 'AccordionElement';
 
+	private static $db = [
+		'OpenFirst' => 'Boolean(0)',
+		'KeepOpenned' => 'Boolean(0)',
+	];
+
     public function getType()
     {
         return self::$singular_name;
@@ -30,4 +36,16 @@ class AccordionElement extends ElementList
     {
         return $this->Elements()->renderWith(static::class.'_AccordionArea');
     }
+
+	public function getCMSFields()
+	{
+		$fields = parent::getCMSFields();
+
+		$fields->addFieldsToTab('Root.Main', [
+			CheckboxField::create('OpenFirst', 'Open first accordion element on page load'),
+			CheckboxField::create('KeepOpenned', 'Keep elements oppened'),
+		]);
+
+		return $fields;
+	}
 }
