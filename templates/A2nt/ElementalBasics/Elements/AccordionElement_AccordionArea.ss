@@ -6,7 +6,7 @@
 				<button
 					data-bs-toggle="collapse"
 					data-bs-target="#ElementContent{$ID}"
-					aria-expanded="<% if $First && $OpenFirst %>true<% else %>false<% end_if %>"
+					aria-expanded="<% if $First && $Up.OpenFirst %>true<% else %>false<% end_if %>"
 					aria-controls="ElementContent{$ID}"
 					class="accordion-button collapsed"
 				>$Title</button>
@@ -14,7 +14,7 @@
 
 			<div
 				id="ElementContent{$ID}"
-				class="accordion-collapse collapse<% if $First && $OpenFirst %> show<% end_if %>"
+				class="accordion-collapse collapse<% if $First && $Up.OpenFirst %> show<% end_if %>"
 				aria-labelledby="ElementHeader{$ID}"
 				<% if not $Up.KeepOpenned %>
 					data-bs-parent="#ElementAccordion{$Parent.ID}"
