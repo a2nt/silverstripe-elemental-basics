@@ -1,6 +1,6 @@
 <% include SlideItem_media %>
 
-<% if $Content || $Headline || $CustomTitle || $Description || $SlideLinkID %>
+<% if $Content || $Headline || $CustomTitle || $Description %>
 <div class="container">
     <div class="carousel-caption">
         <div class="carousel-caption-container typography">
