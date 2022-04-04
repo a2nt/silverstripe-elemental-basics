@@ -3,7 +3,7 @@
             page-header-element
             <% if $ElementalArea.Elements.Count < 1 %>
                 d-block no-elements
-            <% else_if not $ElementalArea.Elements.First.ShowTitle && $ElementalArea.Elements.First.ClassName != App\Elements\SliderElement && $ElementalArea.Elements.First.ClassName != DNADesign\ElementalList\Model\ElementList %>
+            <% else_if not $ElementalArea.Elements.First.ShowTitle && $ElementalArea.Elements.First.ClassName != A2nt\ElementalBasics\Elements\SliderElement && $ElementalArea.Elements.First.ClassName != DNADesign\ElementalList\Model\ElementList %>
                 d-block
             <% end_if %>
         ">
