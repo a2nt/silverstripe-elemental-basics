@@ -13,7 +13,7 @@ use A2nt\ElementalBasics\Models\TeamMember;
 
 class TeamMembersElement extends BaseElement
 {
-    private static $table_name = 'TeamMembersElement';
+    private static $table_name = 'A2nt_ElementalBasics_Elements_TeamMembersElement';
     private static $icon = 'font-icon-menu-security';
     private static $singular_name = 'Team Members';
 
