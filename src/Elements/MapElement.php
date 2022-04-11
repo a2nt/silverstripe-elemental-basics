@@ -41,7 +41,7 @@ class MapElement extends ElementContent
         MapExtension::class,
     ];
 
-    public function getType():string
+    public function getType(): string
     {
         return self::$singular_name;
     }
@@ -61,7 +61,7 @@ class MapElement extends ElementContent
             GridField::create(
                 'Locations',
                 'Locations',
-                $this->owner->Locations(),
+                $this->Locations(),
                 $cfg = GridFieldConfig_RelationEditor::create(100)
             )
         ]);
