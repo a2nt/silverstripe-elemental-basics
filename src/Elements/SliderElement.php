@@ -36,6 +36,7 @@ class SliderElement extends ElementSlideshow
     private static $db = [
         'Interval' => 'Int',
         'SlidesInRow' => 'Int',
+        'ImageOriginalSize' => 'Boolean(0)',
     ];
 
     private static $extensions = [
@@ -53,14 +54,28 @@ class SliderElement extends ElementSlideshow
         return self::$singular_name;
     }
 
+    protected function ratioSize($size)
+    {
+        $count = $this->SlidesInRow;
+        return ($count > 1) ? $size / $count : $size;
+    }
+
     public function getSlideWidth()
     {
-        return self::config()->get('slide_width');
+        if($this->getField('ImageOriginalSize')){
+            return null;
+        }
+
+        return $this->ratioSize(self::config()->get('slide_width'));
     }
 
     public function getSlideHeight()
     {
-        return self::config()->get('slide_height');
+        if($this->getField('ImageOriginalSize')){
+            return null;
+        }
+
+        return $this->ratioSize(self::config()->get('slide_height'));
     }
 
     public function getCMSFields()
@@ -82,6 +97,7 @@ class SliderElement extends ElementSlideshow
         ]);
 
         $fields->addFieldsToTab('Root.Settings', [
+            CheckboxField::create('ImageOriginalSize', 'Use original image size'),
             NumericField::create('Interval', 'Auto-play Interval (sec)'),
             NumericField::create('SlidesInRow'),
         ]);
