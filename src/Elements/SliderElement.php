@@ -8,9 +8,11 @@
 
 namespace A2nt\ElementalBasics\Elements;
 
+use Colymba\BulkUpload\BulkUploader;
 use Dynamic\Elements\Flexslider\Elements\ElementSlideshow;
 use Dynamic\FlexSlider\Model\SlideImage;
 use Dynamic\FlexSlider\ORM\FlexSlider;
+use SilverStripe\Assets\Image;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\LiteralField;
@@ -33,6 +35,7 @@ class SliderElement extends ElementSlideshow
 
     private static $db = [
         'Interval' => 'Int',
+        'SlidesInRow' => 'Int',
     ];
 
     private static $extensions = [
@@ -79,12 +82,19 @@ class SliderElement extends ElementSlideshow
         ]);
 
         $fields->addFieldsToTab('Root.Settings', [
-            NumericField::create('Interval', 'Auto-play Interval'),
+            NumericField::create('Interval', 'Auto-play Interval (sec)'),
+            NumericField::create('SlidesInRow'),
         ]);
 
         $grid = $fields->dataFieldByName('Slides');
         if ($grid) {
             $config = $grid->getConfig();
+
+            /*$bulk = new BulkUploader('Image', Image::class, true);
+            $bulk
+                ->setUfSetup('setFolderName', 'Uploads/SlideImages');
+            $config->addComponent($bulk);*/
+
 
             $columns = new GridFieldEditableColumns();
             $columns->setDisplayFields([

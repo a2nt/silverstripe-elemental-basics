@@ -62,3 +62,7 @@ Dynamic\Elements\Image\Elements\ElementImage:
 
 DNADesign\ElementalVirtual\Model\ElementVirtual:
   controller_template: VirtualElementHolder
+
+Dynamic\FlexSlider\Model\SlideImage:
+  extensions:
+    - A2nt\ElementalBasics\Extensions\SlideImageEx
