@@ -18,15 +18,10 @@ use SilverStripe\ORM\ValidationResult;
 
 class SlideImageEx extends DataExtension
 {
-    /*public function onBulkUpload()
-    {
-        die('saadsadssdsda2222');
-    }
-
     public function validate(ValidationResult $validationResult)
     {
         if (!$this->owner->Name) {
             $this->owner->Name = rand();
         }
-    }*/
+    }
 }

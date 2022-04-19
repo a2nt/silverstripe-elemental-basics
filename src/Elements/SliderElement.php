@@ -90,10 +90,11 @@ class SliderElement extends ElementSlideshow
         if ($grid) {
             $config = $grid->getConfig();
 
-            /*$bulk = new BulkUploader('Image', Image::class, true);
+            $bulk = new BulkUploader('Image', SlideImage::class, false);
             $bulk
-                ->setUfSetup('setFolderName', 'Uploads/SlideImages');
-            $config->addComponent($bulk);*/
+                ->setUfSetup('setFolderName', 'Uploads/SlideImages')
+                ->setUfSetup('getValidator.setAllowedExtensions', ['jpg', 'jpeg', 'png', 'gif']);
+            $config->addComponent($bulk);
 
 
             $columns = new GridFieldEditableColumns();
