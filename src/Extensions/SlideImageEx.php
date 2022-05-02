@@ -8,6 +8,7 @@
 
 namespace A2nt\ElementalBasics\Extensions;
 
+use A2nt\ElementalBasics\Elements\SliderElement;
 use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Forms\CheckboxField;
