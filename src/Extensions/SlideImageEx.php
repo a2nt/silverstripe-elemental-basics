@@ -88,15 +88,6 @@ class SlideImageEx extends DataExtension
             'DateOff',
         ]);
 
-        $width = $this->getSlideWidth();
-        $height = $this->getSlideHeight();
-        $imgFieldTitle = 'Image';
-
-        if($width && $height) {
-            $title .= '('.$this->getSlideWidth().' x '.$this->getSlideHeight().' px)';
-        }else{
-            $title .= '(original image size will be used)';
-        }
 
         $fields->dataFieldByName('Image')
             ->setTitle('Image ('.$this->getSlideWidth().' x '.$this->getSlideHeight().' px)');
