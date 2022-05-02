@@ -111,7 +111,7 @@ class SliderElement extends ElementSlideshow
                 ->setUfSetup('setFolderName', 'Uploads/SlideImages')
                 ->setUfSetup('getValidator.setAllowedExtensions', ['jpg', 'jpeg', 'png', 'gif']);
             $config->addComponent($bulk);
-
+            $config->addComponent(new \Colymba\BulkManager\BulkManager());
 
             $columns = new GridFieldEditableColumns();
             $columns->setDisplayFields([
