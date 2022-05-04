@@ -1,5 +1,12 @@
 <% if $Children %>
-    <div class="nav-item dropdown dropdown-hover<% if $SubmenuColumns %> submenu-cols-dropdown<% end_if %> {$CSSClass} {$ExtraClass}">
+    <div
+        class="
+            nav-item dropdown dropdown-hover
+            <% if $SubmenuColumns %>submenu-cols-dropdown<% end_if %>
+            {$CSSClass} {$ExtraClass}
+        "
+        <% if $Children %>data-bs-toggle="hover"<% end_if %>
+    >
         <% include NavItem_link ExtraClass="dropdown-toggle-fl dropdown-toggle-notouch" %>
 
         <button
