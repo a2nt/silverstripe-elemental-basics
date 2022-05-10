@@ -18,6 +18,13 @@ use SilverStripe\Forms\NumericField;
 use SilverStripe\ORM\DataExtension;
 use A2nt\ElementalBasics\Models\MapPin;
 
+/**
+ * Class \A2nt\ElementalBasics\Extensions\MapExtension
+ *
+ * @property \A2nt\ElementalBasics\Elements\MapElement|\A2nt\ElementalBasics\Extensions\MapExtension $owner
+ * @property int $MapZoom
+ * @method \SilverStripe\ORM\ManyManyList|\A2nt\ElementalBasics\Models\MapPin[] Locations()
+ */
 class MapExtension extends DataExtension
 {
     private static $db = [

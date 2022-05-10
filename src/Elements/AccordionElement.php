@@ -11,6 +11,12 @@ namespace A2nt\ElementalBasics\Elements;
 use DNADesign\ElementalList\Model\ElementList;
 use SilverStripe\Forms\CheckboxField;
 
+/**
+ * Class \A2nt\ElementalBasics\Elements\AccordionElement
+ *
+ * @property boolean $OpenFirst
+ * @property boolean $KeepOpenned
+ */
 class AccordionElement extends ElementList
 {
     private static $icon = 'font-icon-block-file-list';

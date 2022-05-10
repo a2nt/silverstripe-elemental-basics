@@ -11,6 +11,10 @@ namespace A2nt\ElementalBasics\Elements;
 use DNADesign\Elemental\Models\BaseElement;
 use A2nt\ElementalBasics\Models\TeamMember;
 
+/**
+ * Class \A2nt\ElementalBasics\Elements\TeamMembersElement
+ *
+ */
 class TeamMembersElement extends BaseElement
 {
     private static $table_name = 'A2nt_ElementalBasics_Elements_TeamMembersElement';

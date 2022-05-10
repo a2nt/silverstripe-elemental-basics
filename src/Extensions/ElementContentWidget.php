@@ -10,6 +10,11 @@ namespace A2nt\ElementalBasics\Extensions;
 
 use SilverStripe\ORM\DataExtension;
 
+/**
+ * Class \A2nt\ElementalBasics\Extensions\ElementContentWidget
+ *
+ * @property \A2nt\ElementalBasics\Extensions\ElementContentWidget $owner
+ */
 class ElementContentWidget extends DataExtension
 {
 }

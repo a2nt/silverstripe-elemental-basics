@@ -11,6 +11,16 @@ namespace A2nt\ElementalBasics\Elements;
 use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\Core\Convert;
 
+/**
+ * Class \A2nt\ElementalBasics\Elements\InstagramElement
+ *
+ * @property string $Username
+ * @property string $Tag
+ * @property boolean $DisplayProfile
+ * @property boolean $DisplayBiography
+ * @property boolean $DisplayGallery
+ * @property boolean $DisplayCaptions
+ */
 class InstagramElement extends BaseElement
 {
     private static $icon = 'font-icon-menu-files';

@@ -20,6 +20,25 @@ use SilverStripe\Forms\NumericField;
 use SilverStripe\Forms\ReadonlyField;
 use Symbiote\GridFieldExtensions\GridFieldEditableColumns;
 
+/**
+ * Class \A2nt\ElementalBasics\Elements\SliderElement
+ *
+ * @property string $Animation
+ * @property boolean $Loop
+ * @property boolean $Animate
+ * @property boolean $ThumbnailNav
+ * @property boolean $SliderControlNav
+ * @property boolean $SliderDirectionNav
+ * @property boolean $CarouselControlNav
+ * @property boolean $CarouselDirectionNav
+ * @property int $CarouselThumbnailCt
+ * @property float $FlexSliderSpeed
+ * @property int $Interval
+ * @property int $SlidesInRow
+ * @property boolean $ImageOriginalSize
+ * @method \SilverStripe\ORM\DataList|\Dynamic\FlexSlider\Model\SlideImage[] Slides()
+ * @mixin \Dynamic\FlexSlider\ORM\FlexSlider
+ */
 class SliderElement extends ElementSlideshow
 {
     private static $singular_name = 'Slider';

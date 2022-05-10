@@ -13,6 +13,36 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\Versioned\Versioned;
 use A2nt\CMSNiceties\Extensions\SocialExtension;
 
+/**
+ * Class \A2nt\ElementalBasics\Models\TeamMember
+ *
+ * @property int $Version
+ * @property string $FirstName
+ * @property string $LastName
+ * @property string $Company
+ * @property string $Position
+ * @property string $Content
+ * @property int $FacebookID
+ * @property int $LinkedInID
+ * @property int $PinterestID
+ * @property int $InstagramID
+ * @property int $TwitterID
+ * @property int $YouTubeID
+ * @property int $PublicEmailID
+ * @property int $PhoneNumberID
+ * @property int $PhotoID
+ * @method \Sheadawson\Linkable\Models\Link Facebook()
+ * @method \Sheadawson\Linkable\Models\Link LinkedIn()
+ * @method \Sheadawson\Linkable\Models\Link Pinterest()
+ * @method \Sheadawson\Linkable\Models\Link Instagram()
+ * @method \Sheadawson\Linkable\Models\Link Twitter()
+ * @method \Sheadawson\Linkable\Models\Link YouTube()
+ * @method \Sheadawson\Linkable\Models\Link PublicEmail()
+ * @method \Sheadawson\Linkable\Models\Link PhoneNumber()
+ * @method \SilverStripe\Assets\Image Photo()
+ * @mixin \A2nt\CMSNiceties\Extensions\SocialExtension
+ * @mixin \SilverStripe\Versioned\Versioned
+ */
 class TeamMember extends DataObject
 {
     private static $table_name = 'TeamMember';

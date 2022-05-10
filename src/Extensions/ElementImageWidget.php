@@ -18,6 +18,19 @@ use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
 
+/**
+ * Class \A2nt\ElementalBasics\Extensions\ElementImageWidget
+ *
+ * @property \A2nt\ElementalBasics\Extensions\ElementImageWidget $owner
+ * @property boolean $Resize
+ * @property boolean $ManualWidth
+ * @property float $ImageHeight
+ * @property float $ImageWidth
+ * @property string $ImageAspectRatio
+ * @property string $Content
+ * @property int $ImageLinkID
+ * @method \Sheadawson\Linkable\Models\Link ImageLink()
+ */
 class ElementImageWidget extends DataExtension
 {
     private static $available_heights = [

@@ -18,6 +18,30 @@ use SilverStripe\Versioned\Versioned;
 use A2nt\ElementalBasics\Elements\MapElement;
 use Symbiote\Addressable\Addressable;
 
+/**
+ * Class \A2nt\ElementalBasics\Models\MapPin
+ *
+ * @property int $Version
+ * @property boolean $DirectionsByAddress
+ * @property boolean $LatLngOverride
+ * @property float $Lat
+ * @property float $Lng
+ * @property string $Address
+ * @property string $Suburb
+ * @property string $State
+ * @property string $Postcode
+ * @property string $Country
+ * @property string $Title
+ * @property boolean $ShowAtMap
+ * @property int $PhoneNumberID
+ * @property int $FaxID
+ * @method \Sheadawson\Linkable\Models\Link PhoneNumber()
+ * @method \Sheadawson\Linkable\Models\Link Fax()
+ * @method \SilverStripe\ORM\ManyManyList|\A2nt\ElementalBasics\Elements\MapElement[] MapElements()
+ * @mixin \Symbiote\Addressable\Addressable
+ * @mixin \A2nt\SilverStripeMapboxField\MarkerExtension
+ * @mixin \SilverStripe\Versioned\Versioned
+ */
 class MapPin extends DataObject
 {
     private static $table_name = 'MapPin';

@@ -22,6 +22,13 @@ use A2nt\ElementalBasics\Controllers\MapElementController;
 use A2nt\ElementalBasics\Extensions\MapExtension;
 use SilverStripe\Forms\GridField\GridFieldDataColumns;
 
+/**
+ * Class \A2nt\ElementalBasics\Elements\MapElement
+ *
+ * @property int $MapZoom
+ * @method \SilverStripe\ORM\ManyManyList|\A2nt\ElementalBasics\Models\MapPin[] Locations()
+ * @mixin \A2nt\ElementalBasics\Extensions\MapExtension
+ */
 class MapElement extends ElementContent
 {
     private static $icon = 'font-icon-globe-1';

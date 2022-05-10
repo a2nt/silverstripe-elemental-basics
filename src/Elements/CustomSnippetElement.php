@@ -13,6 +13,10 @@ use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\TextareaField;
 
+/**
+ * Class \A2nt\ElementalBasics\Elements\CustomSnippetElement
+ *
+ */
 class CustomSnippetElement extends ElementContent
 {
     private static $icon = 'font-icon-external-link';

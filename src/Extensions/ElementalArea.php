@@ -14,6 +14,11 @@ use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\HasManyList;
 use SilverStripe\ORM\UnsavedRelationList;
 
+/**
+ * Class \A2nt\ElementalBasics\Extensions\ElementalArea
+ *
+ * @property \A2nt\ElementalBasics\Extensions\ElementalArea $owner
+ */
 class ElementalArea extends DataExtension
 {
     public function ElementFilteredControllers()

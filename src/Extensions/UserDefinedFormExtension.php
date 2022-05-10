@@ -10,6 +10,12 @@ use SilverStripe\Forms\TextareaField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\UserForms\Model\EditableFormField;
 
+/**
+ * Class \A2nt\ElementalBasics\Extensions\UserDefinedFormExtension
+ *
+ * @property \A2nt\ElementalBasics\Extensions\UserDefinedFormExtension $owner
+ * @method \SilverStripe\ORM\ManyManyList|\SilverStripe\UserForms\Model\EditableFormField[] SubmissionColumns()
+ */
 class UserDefinedFormExtension extends DataExtension
 {
     /*private static $db = [

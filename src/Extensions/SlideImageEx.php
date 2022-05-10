@@ -20,6 +20,14 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\ValidationResult;
 
+/**
+ * Class \A2nt\ElementalBasics\Extensions\SlideImageEx
+ *
+ * @property \A2nt\ElementalBasics\Extensions\SlideImageEx $owner
+ * @property boolean $Hide
+ * @property string $DateOn
+ * @property string $DateOff
+ */
 class SlideImageEx extends DataExtension
 {
       private static $db = [

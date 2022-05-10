@@ -15,6 +15,11 @@ use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
 
+/**
+ * Class \A2nt\ElementalBasics\Extensions\BaseElementEx
+ *
+ * @property \A2nt\ElementalBasics\Extensions\BaseElementEx $owner
+ */
 class BaseElementEx extends DataExtension
 {
 

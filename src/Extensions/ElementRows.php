@@ -17,6 +17,13 @@ use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
 use A2nt\ElementalBasics\Elements\AccordionElement;
 
+/**
+ * Class \A2nt\ElementalBasics\Extensions\ElementRows
+ *
+ * @property \A2nt\ElementalBasics\Extensions\ElementRows $owner
+ * @property string $ContainerType
+ * @property string $Size
+ */
 class ElementRows extends DataExtension
 {
     private static $container_max_width = 1140;
