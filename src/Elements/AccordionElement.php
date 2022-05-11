@@ -49,7 +49,7 @@ class AccordionElement extends ElementList
 
 		$fields->addFieldsToTab('Root.Main', [
 			CheckboxField::create('OpenFirst', 'Open first accordion element on page load'),
-			CheckboxField::create('KeepOpenned', 'Keep elements oppened'),
+			CheckboxField::create('KeepOpenned', 'Keep elements open'),
 		]);
 
 		return $fields;
