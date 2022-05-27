@@ -127,8 +127,8 @@ class SliderElement extends ElementSlideshow
 
             $bulk = new BulkUploader('Image', SlideImage::class, false);
             $bulk
-                ->setUfSetup('setFolderName', 'Uploads/SlideImages')
-                ->setUfSetup('getValidator.setAllowedExtensions', ['jpg', 'jpeg', 'png', 'gif']);
+                ->setUfSetup('setFolderName', 'Uploads/SlideImages');
+                //->setUfSetup('getValidator.setAllowedExtensions', ['jpg', 'jpeg', 'png', 'gif']);
             $config->addComponent($bulk);
             $config->addComponent(new \Colymba\BulkManager\BulkManager());
 
