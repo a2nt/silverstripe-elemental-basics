@@ -90,14 +90,16 @@ class MapPin extends DataObject
 
         $fields->replaceField(
             'PhoneNumberID',
-            LinkField::create('PhoneNumberID', 'Phone Number', $this)
-                ->setAllowedTypes(['Phone'])
+            LinkField::create('PhoneNumber', 'Phone Number', $this, [
+                'types' => ['Phone']
+            ])
         );
 
         $fields->replaceField(
-            'FaxID',
-            LinkField::create('FaxID', 'FAX', $this)
-                ->setAllowedTypes(['Phone'])
+            'Fax',
+            LinkField::create('Fax', 'FAX', $this, [
+                'types' => ['Phone']
+            ])
         );
         $fields->removeByName(['Map', 'LatLngOverride', 'Lng','Lat']);
 
