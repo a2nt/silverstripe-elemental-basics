@@ -20,7 +20,7 @@
         "symbiote/silverstripe-gridfieldextensions": "*",
         "dynamic/silverstripe-elemental-flexslider": "*",
         "dynamic/silverstripe-elemental-image": "*",
-        "dynamic/silverstripe-linkable": "*",
+        "gorriecoe/silverstripe-linkfield": "*",
         "a2nt/silverstripe-mapboxfield": "dev-master"
     },
     "require-dev": {

@@ -9,8 +9,8 @@
 namespace A2nt\ElementalBasics\Extensions;
 
 use Dynamic\Elements\Image\Elements\ElementImage;
-use Sheadawson\Linkable\Forms\LinkField;
-use Sheadawson\Linkable\Models\Link;
+use gorriecoe\Link\Models\Link;
+use gorriecoe\LinkField\LinkField;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\CompositeField;

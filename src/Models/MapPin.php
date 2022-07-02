@@ -10,8 +10,8 @@ namespace A2nt\ElementalBasics\Models;
 
 use A2nt\SilverStripeMapboxField\MapboxField;
 use A2nt\SilverStripeMapboxField\MarkerExtension;
-use Sheadawson\Linkable\Forms\LinkField;
-use Sheadawson\Linkable\Models\Link;
+use gorriecoe\LinkField\LinkField;
+use gorriecoe\Link\Models\Link;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Versioned\Versioned;
