@@ -23,6 +23,10 @@
         "gorriecoe/silverstripe-linkfield": "*",
         "a2nt/silverstripe-mapboxfield": "dev-master"
     },
+    "replace": {
+        "sheadawson/silverstripe-linkable": "*",
+        "dynamic/silverstripe-linkable": "*"
+    },
     "require-dev": {
         "phpunit/phpunit": "^5.7"
     },
