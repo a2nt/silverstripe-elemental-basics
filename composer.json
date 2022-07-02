@@ -21,7 +21,8 @@
         "dynamic/silverstripe-elemental-flexslider": "*",
         "dynamic/silverstripe-elemental-image": "*",
         "gorriecoe/silverstripe-linkfield": "*",
-        "a2nt/silverstripe-mapboxfield": "dev-master"
+        "a2nt/silverstripe-mapboxfield": "dev-master",
+        "gorriecoe/silverstripe-embed": "*"
     },
     "replace": {
         "sheadawson/silverstripe-linkable": "*",
