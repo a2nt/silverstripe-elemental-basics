@@ -71,7 +71,7 @@ class ElementImageWidget extends DataExtension
 
         $fields->insertBefore(
             'Image',
-            LinkField::create('ImageLinkID', 'Link')
+            LinkField::create('ImageLinkID', 'Link', $this->owner)
         );
 
         $this->owner->ImageHeight = $this->getHeight();
