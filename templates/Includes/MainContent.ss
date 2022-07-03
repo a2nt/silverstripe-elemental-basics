@@ -7,17 +7,16 @@
 	    </div>
 	<% end_if %>
 
-	<% if $URLSegment != 'home' %>
-	    <div id="PageBreadcumbs" class="element element__breadcrumbs">
-	        $Breadcrumbs
-	    </div>
-	<% end_if %>
-
 	<% if $SideBarContent || $SideBarView && $SideBarView.Widgets.Count %>
 	    <div class="content-holder content-holder__sidebar">
 	        <div class="{$DefaultContainer}">
 	            <div class="row">
 	                <div class="col-md-9 layout__col">
+	                	<% if $URLSegment != 'home' %>
+						    <div id="PageBreadcumbs" class="element element__breadcrumbs">
+						        $Breadcrumbs
+						    </div>
+						<% end_if %>
 	                    $Layout
 	                </div>
 	                <div class="col-md-3 sidebar__col">
@@ -35,6 +34,11 @@
 	    </div>
 	<% else %>
 	    <div class="content-holder">
+	    	<% if $URLSegment != 'home' %>
+			    <div id="PageBreadcumbs" class="element element__breadcrumbs">
+			        $Breadcrumbs
+			    </div>
+			<% end_if %>
 	        $Layout
 	    </div>
 	<% end_if %>
