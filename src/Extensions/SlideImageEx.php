@@ -8,6 +8,7 @@
 
 namespace A2nt\ElementalBasics\Extensions;
 
+use LeKoala\FilePond\FilePondField;
 use A2nt\ElementalBasics\Elements\SliderElement;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\File;
@@ -111,7 +112,8 @@ class SlideImageEx extends DataExtension
             'DateOff',
         ]);
 
-        $videoUpload = UploadField::create('VideoFile')
+        $videoUpload = FilePondField::create('VideoFile')
+            ->setChunkUploads(true)
             ->setAllowedExtensions(['mp4'])
             ->setFolderName('Uploads/SlideVideos');
 

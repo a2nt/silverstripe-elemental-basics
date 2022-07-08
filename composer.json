@@ -21,7 +21,8 @@
         "dynamic/silverstripe-elemental-flexslider": "*",
         "dynamic/silverstripe-elemental-image": "*",
         "gorriecoe/silverstripe-linkfield": "*",
-        "a2nt/silverstripe-mapboxfield": "dev-master"
+        "a2nt/silverstripe-mapboxfield": "dev-master",
+	"lekoala/silverstripe-filepond": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7"

@@ -66,3 +66,9 @@ DNADesign\ElementalVirtual\Model\ElementVirtual:
 Dynamic\FlexSlider\Model\SlideImage:
   extensions:
     - A2nt\ElementalBasics\Extensions\SlideImageEx
+
+SilverStripe\Assets\File:
+  extensions:
+    - LeKoala\FilePond\FilePondFileExtension
+LeKoala\FilePond\FilePondField:
+  enable_auto_thumbnails: true
