@@ -72,3 +72,6 @@ SilverStripe\Assets\File:
     - LeKoala\FilePond\FilePondFileExtension
 LeKoala\FilePond\FilePondField:
   enable_auto_thumbnails: true
+
+Dynamic\FlexSlider\Model\SlideImage:
+  max_video_size: 300000000

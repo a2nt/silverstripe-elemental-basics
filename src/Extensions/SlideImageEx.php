@@ -9,8 +9,10 @@
 namespace A2nt\ElementalBasics\Extensions;
 
 use A2nt\ElementalBasics\Elements\SliderElement;
+use Dynamic\FlexSlider\Model\SlideImage;
 use LeKoala\FilePond\FilePondField;
 use SilverStripe\Assets\File;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DatetimeField;
 use SilverStripe\Forms\ToggleCompositeField;
@@ -117,7 +119,7 @@ class SlideImageEx extends DataExtension
             ->setFolderName('Uploads/SlideVideos');
 
         $validator = $videoUpload->getValidator();
-        $validator->setAllowedMaxFileSize(['mp4' => 300000000]);
+        $validator->setAllowedMaxFileSize(['mp4' => Config::inst()->get(SlideImage::class, 'max_video_size')]);
 
         $maxFileSize = $validator->getAllowedMaxFileSize('mp4');
         $videoUpload->setTitle('Video File (max size: '.self::formatBytes($maxFileSize).')');
