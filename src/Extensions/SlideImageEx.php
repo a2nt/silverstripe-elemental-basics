@@ -8,9 +8,8 @@
 
 namespace A2nt\ElementalBasics\Extensions;
 
-use LeKoala\FilePond\FilePondField;
 use A2nt\ElementalBasics\Elements\SliderElement;
-use SilverStripe\AssetAdmin\Forms\UploadField;
+use LeKoala\FilePond\FilePondField;
 use SilverStripe\Assets\File;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DatetimeField;
