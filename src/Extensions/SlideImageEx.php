@@ -9,6 +9,7 @@
 namespace A2nt\ElementalBasics\Extensions;
 
 use A2nt\ElementalBasics\Elements\SliderElement;
+use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\File;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DatetimeField;
@@ -35,6 +36,10 @@ class SlideImageEx extends DataExtension
 
     private static $has_one = [
         'VideoFile' => File::class,
+    ];
+
+    private static $owns = [
+        'VideoFile',
     ];
 
     private $_cache = [
@@ -87,6 +92,14 @@ class SlideImageEx extends DataExtension
         return $element->getSlideHeight();
     }
 
+    public static function formatBytes($size, $precision = 2)
+    {
+        $base = log($size, 1024);
+        $suffixes = array('', 'K', 'M', 'G', 'T');
+
+        return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor($base)];
+    }
+
     public function updateCMSFields(FieldList $fields)
     {
         parent::updateCMSFields($fields);
@@ -98,6 +111,17 @@ class SlideImageEx extends DataExtension
             'DateOff',
         ]);
 
+        $videoUpload = UploadField::create('VideoFile')
+            ->setAllowedExtensions(['mp4'])
+            ->setFolderName('Uploads/SlideVideos');
+
+        $videoUpload->setTitle(
+            'Video File (max size: '
+            .self::formatBytes($videoUpload->getValidator()->getAllowedMaxFileSize('mp4'))
+            .')'
+        );
+
+        $fields->insertAfter('Headline', $videoUpload);
 
         $fields->dataFieldByName('Image')
             ->setTitle('Image ('.$this->getSlideWidth().' x '.$this->getSlideHeight().' px)');
