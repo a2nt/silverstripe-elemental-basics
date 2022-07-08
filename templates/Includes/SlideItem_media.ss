@@ -1,5 +1,10 @@
 <% if $Video || $Image %>
-    <% if $Video %>
+	<% if $VideoFile %>
+		<video controls="controls">
+			<source src="{$VideoFile.Link}" type="video/mp4" />
+			Your browser does not support the video tag.
+		</video>
+    <% else_if $Video %>
         <div class="video">
             $Video.EmbedHTML.RAW
         </div>

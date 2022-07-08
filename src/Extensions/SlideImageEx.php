@@ -9,15 +9,12 @@
 namespace A2nt\ElementalBasics\Extensions;
 
 use A2nt\ElementalBasics\Elements\SliderElement;
-use DNADesign\Elemental\Models\BaseElement;
-use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Assets\File;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DatetimeField;
 use SilverStripe\Forms\ToggleCompositeField;
-use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\ValidationResult;
 
 /**
@@ -30,19 +27,23 @@ use SilverStripe\ORM\ValidationResult;
  */
 class SlideImageEx extends DataExtension
 {
-      private static $db = [
+    private static $db = [
         'Hide' => 'Boolean(0)',
         'DateOn' => 'Datetime',
         'DateOff' => 'Datetime',
     ];
 
-     private $_cache = [
-         'element' => [],
-     ];
+    private static $has_one = [
+        'VideoFile' => File::class,
+    ];
 
-     public function getElement()
+    private $_cache = [
+        'element' => [],
+    ];
+
+    public function getElement()
     {
-        if(!isset($this->_cache['element'][$this->owner->ID])) {
+        if (!isset($this->_cache['element'][$this->owner->ID])) {
             $this->_cache['element'][$this->owner->ID] = $this->owner->SlideshowElement();
         }
 
@@ -55,11 +56,11 @@ class SlideImageEx extends DataExtension
         $el = $this->getElement();
         $img = $this->owner->Image();
 
-        if(!$img) {
+        if (!$img) {
             return null;
         }
 
-        if($el->getField('ImageOriginalSize')){
+        if ($el->getField('ImageOriginalSize')) {
             return $img->Link();
         }
 
@@ -69,8 +70,8 @@ class SlideImageEx extends DataExtension
     public function getSlideWidth()
     {
         $element = $this->getElement();
-        if(!$element->ID) {
-        	return SliderElement::config()->get('slide_width');
+        if (!$element->ID) {
+            return SliderElement::config()->get('slide_width');
         }
 
         return $element->getSlideWidth();
@@ -79,8 +80,8 @@ class SlideImageEx extends DataExtension
     public function getSlideHeight()
     {
         $element = $this->getElement();
-        if(!$element->ID) {
-        	return SliderElement::config()->get('slide_height');
+        if (!$element->ID) {
+            return SliderElement::config()->get('slide_height');
         }
 
         return $element->getSlideHeight();
