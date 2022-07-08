@@ -116,11 +116,8 @@ class SlideImageEx extends DataExtension
             ->setAllowedExtensions(['mp4'])
             ->setFolderName('Uploads/SlideVideos');
 
-        $videoUpload->setTitle(
-            'Video File (max size: '
-            .self::formatBytes($videoUpload->getValidator()->getAllowedMaxFileSize('mp4'))
-            .')'
-        );
+        $maxFileSize = $videoUpload->getValidator()->getAllowedMaxFileSize('mp4');
+        $videoUpload->setTitle('Video File (max size: '.self::formatBytes($maxFileSize).')');
 
         $fields->insertAfter('Headline', $videoUpload);
 
