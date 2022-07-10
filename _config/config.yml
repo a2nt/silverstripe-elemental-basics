@@ -64,6 +64,7 @@ DNADesign\ElementalVirtual\Model\ElementVirtual:
   controller_template: VirtualElementHolder
 
 Dynamic\FlexSlider\Model\SlideImage:
+  max_video_size: 300000000
   extensions:
     - A2nt\ElementalBasics\Extensions\SlideImageEx
 
@@ -72,6 +73,3 @@ SilverStripe\Assets\File:
     - LeKoala\FilePond\FilePondFileExtension
 LeKoala\FilePond\FilePondField:
   enable_auto_thumbnails: true
-
-Dynamic\FlexSlider\Model\SlideImage:
-  max_video_size: 300000000
