@@ -2,148 +2,183 @@
 /**
  * Created by PhpStorm.
  * User: tony
- * Date: 6/23/18
- * Time: 1:23 PM
+ * Date: 6/30/18
+ * Time: 11:54 PM
  */
 
-namespace A2nt\ElementalBasics\Extensions;
+namespace A2nt\ElementalBasics\Elements;
 
-use A2nt\ElementalBasics\Elements\SliderElement;
+use Colymba\BulkUpload\BulkUploader;
+use Dynamic\Elements\Flexslider\Elements\ElementSlideshow;
 use Dynamic\FlexSlider\Model\SlideImage;
-use LeKoala\FilePond\FilePondField;
-use SilverStripe\Assets\File;
-use SilverStripe\Core\Config\Config;
+use Dynamic\FlexSlider\ORM\FlexSlider;
+use SilverStripe\Assets\Image;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\CheckboxField;
-use SilverStripe\Forms\DatetimeField;
-use SilverStripe\Forms\ToggleCompositeField;
-use SilverStripe\ORM\DataExtension;
-use SilverStripe\Forms\FieldList;
-use SilverStripe\ORM\ValidationResult;
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\NumericField;
+use SilverStripe\Forms\ReadonlyField;
+use Symbiote\GridFieldExtensions\GridFieldEditableColumns;
 
 /**
- * Class \A2nt\ElementalBasics\Extensions\SlideImageEx
+ * Class \A2nt\ElementalBasics\Elements\SliderElement
  *
- * @property \A2nt\ElementalBasics\Extensions\SlideImageEx $owner
- * @property boolean $Hide
- * @property string $DateOn
- * @property string $DateOff
+ * @property string $Animation
+ * @property boolean $Loop
+ * @property boolean $Animate
+ * @property boolean $ThumbnailNav
+ * @property boolean $SliderControlNav
+ * @property boolean $SliderDirectionNav
+ * @property boolean $CarouselControlNav
+ * @property boolean $CarouselDirectionNav
+ * @property int $CarouselThumbnailCt
+ * @property float $FlexSliderSpeed
+ * @property int $Interval
+ * @property int $SlidesInRow
+ * @property boolean $ImageOriginalSize
+ * @method \SilverStripe\ORM\DataList|\Dynamic\FlexSlider\Model\SlideImage[] Slides()
+ * @mixin \Dynamic\FlexSlider\ORM\FlexSlider
  */
-class SlideImageEx extends DataExtension
+class SliderElement extends ElementSlideshow
 {
+    private static $singular_name = 'Slider';
+
+    private static $plural_name = 'Sliders';
+
+    private static $description = 'Displays slide show';
+
+    private static $table_name = 'SliderElement';
+
+    private static $slide_width = 2140;
+    private static $slide_height = 700;
+
     private static $db = [
-        'Hide' => 'Boolean(0)',
-        'DateOn' => 'Datetime',
-        'DateOff' => 'Datetime',
+        'Interval' => 'Int',
+        'SlidesInRow' => 'Int',
+        'ImageOriginalSize' => 'Boolean(0)',
     ];
 
-    private static $has_one = [
-        'VideoFile' => File::class,
+    private static $extensions = [
+        FlexSlider::class,
     ];
 
     private static $owns = [
-        'VideoFile',
+        'Slides',
     ];
 
-    private $_cache = [
-        'element' => [],
-    ];
+    private $items;
 
-    public function getElement()
+    public function getType()
     {
-        if (!isset($this->_cache['element'][$this->owner->ID])) {
-            $this->_cache['element'][$this->owner->ID] = $this->owner->SlideshowElement();
-        }
-
-        return $this->_cache['element'][$this->owner->ID];
+        return self::$singular_name;
     }
 
-
-    public function ImageURL()
+    protected function ratioSize($size)
     {
-        $el = $this->getElement();
-        $img = $this->owner->Image();
-
-        if (!$img) {
-            return null;
-        }
-
-        if ($el->getField('ImageOriginalSize')) {
-            return $img->Link();
-        }
-
-        return $img->FocusFill($this->getSlideWidth(), $this->getSlideHeight())->Link();
+        $count = $this->SlidesInRow;
+        return ($count > 1) ? $size / $count : $size;
     }
 
     public function getSlideWidth()
     {
-        $element = $this->getElement();
-        if (!$element->ID) {
-            return SliderElement::config()->get('slide_width');
+        if ($this->getField('ImageOriginalSize')) {
+            return null;
         }
 
-        return $element->getSlideWidth();
+        return $this->ratioSize(self::config()->get('slide_width'));
     }
 
     public function getSlideHeight()
     {
-        $element = $this->getElement();
-        if (!$element->ID) {
-            return SliderElement::config()->get('slide_height');
+        if ($this->getField('ImageOriginalSize')) {
+            return null;
         }
 
-        return $element->getSlideHeight();
+        return $this->ratioSize(self::config()->get('slide_height'));
     }
 
-    public static function formatBytes($size, $precision = 2)
+    public function getCMSFields()
     {
-        $base = log($size, 1024);
-        $suffixes = array('', 'K', 'M', 'G', 'T');
+        $fields = parent::getCMSFields();
 
-        return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor($base)];
-    }
-
-    public function updateCMSFields(FieldList $fields)
-    {
-        parent::updateCMSFields($fields);
-
+        // remove in case you don't need to provide this functionality
         $fields->removeByName([
-            'PageLinkID',
-            'Hide',
-            'DateOn',
-            'DateOff',
+            'ConfigHD',
+            'Animation',
+            'Loop',
+            'Animate',
+            'ThumbnailNav',
+            'SliderControlNav',
+            'SliderDirectionNav',
+            'CarouselControlNav',
+            'CarouselDirectionNav',
+            'CarouselThumbnailCt',
         ]);
 
-        $videoUpload = FilePondField::create('VideoFile')
-            ->setChunkUploads(true)
-            ->setAllowedExtensions(['mp4'])
-            ->setFolderName('Uploads/SlideVideos');
+        $fields->addFieldsToTab('Root.Settings', [
+            CheckboxField::create('ImageOriginalSize', 'Use original image size'),
+            NumericField::create('Interval', 'Auto-play Interval (sec)'),
+            NumericField::create('SlidesInRow'),
+        ]);
 
-        $validator = $videoUpload->getValidator();
-        $validator->setAllowedMaxFileSize(['mp4' => Config::inst()->get(SlideImage::class, 'max_video_size')]);
+        $grid = $fields->dataFieldByName('Slides');
+        if ($grid) {
+            $fields->insertBefore('Slides', LiteralField::create(
+                'SlidesNote',
+                '<div class="alert alert-info">Note: to show hidden slide open slide item and uncheck "Hide" checkbox</div>'
+            ));
 
-        $maxFileSize = $validator->getAllowedMaxFileSize('mp4');
-        $videoUpload->setTitle('Video File (max size: '.self::formatBytes($maxFileSize).')');
+            $config = $grid->getConfig();
 
-        $fields->insertAfter('Headline', $videoUpload);
+            $bulk = new BulkUploader('Image', SlideImage::class, false);
+            $bulk
+                ->setUfSetup('setFolderName', 'Uploads/SlideImages');
+            //->setUfSetup('getValidator.setAllowedExtensions', ['jpg', 'jpeg', 'png', 'gif']);
+            $config->addComponent($bulk);
+            $config->addComponent(new \Colymba\BulkManager\BulkManager());
 
-        $fields->dataFieldByName('Image')
-            ->setTitle('Image ('.$this->getSlideWidth().' x '.$this->getSlideHeight().' px)');
+            $columns = new GridFieldEditableColumns();
+            $columns->setDisplayFields([
+                    'Hide'  => [
+                        'title' => 'Hide it?',
+                        'field' => CheckboxField::class,
+                    ],
+                ]);
 
-        $fields->addFieldToTab('Root.Main', ToggleCompositeField::create(
-            'ConfigHD',
-            'Slide Settings',
-            [
-                CheckboxField::create('Hide', 'Hide this slide? (That will hide the slide regardless of start/end fields)'),
-                DatetimeField::create('DateOn', 'When would you like to start showing the slide?'),
-                DatetimeField::create('DateOff', 'When would you like to stop showing the slide?'),
-            ]
-        ));
+            $config->addComponent($columns);
+        }
+
+        return $fields;
     }
 
-    public function validate(ValidationResult $validationResult)
+    /**
+     * @return mixed
+     */
+    public function getSlideShow()
     {
-        if (!$this->owner->Name) {
-            $this->owner->Name = rand();
+        if ($this->items) {
+            return $this->items;
+        }
+
+        $date = date('Y-m-d H:i:s');
+        $this->items = $this->Slides()->filter([
+            'Hide' => '0',
+        ])->filterByCallback(static function ($item, $list) use ($date) {
+            $on = $item->getField('DateOn');
+            $off = $item->getField('DateOff');
+
+            return ($on <= $date) && (!$off || $off > $date);
+        })->sort('SortOrder');
+
+        return $this->items;
+    }
+
+    public function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+
+        if (!$this->getField('Interval')) {
+            $this->setField('Interval', 5000);
         }
     }
 }
