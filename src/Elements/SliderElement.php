@@ -81,7 +81,7 @@ class SliderElement extends ElementSlideshow
 
     public function getSlideWidth()
     {
-        if($this->getField('ImageOriginalSize')){
+        if ($this->getField('ImageOriginalSize')) {
             return null;
         }
 
@@ -90,7 +90,7 @@ class SliderElement extends ElementSlideshow
 
     public function getSlideHeight()
     {
-        if($this->getField('ImageOriginalSize')){
+        if ($this->getField('ImageOriginalSize')) {
             return null;
         }
 
@@ -123,12 +123,17 @@ class SliderElement extends ElementSlideshow
 
         $grid = $fields->dataFieldByName('Slides');
         if ($grid) {
+            $fields->insertBefore('Slides', LiteralField::create(
+                'SlidesNote',
+                '<div class="alert alert-info">Note: to show hidden slide open slide item and uncheck "Hide" checkbox</div>'
+            ));
+
             $config = $grid->getConfig();
 
             $bulk = new BulkUploader('Image', SlideImage::class, false);
             $bulk
                 ->setUfSetup('setFolderName', 'Uploads/SlideImages');
-                //->setUfSetup('getValidator.setAllowedExtensions', ['jpg', 'jpeg', 'png', 'gif']);
+            //->setUfSetup('getValidator.setAllowedExtensions', ['jpg', 'jpeg', 'png', 'gif']);
             $config->addComponent($bulk);
             $config->addComponent(new \Colymba\BulkManager\BulkManager());
 
