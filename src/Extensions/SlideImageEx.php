@@ -133,7 +133,7 @@ class SlideImageEx extends DataExtension
             CheckboxField::create('Hide', 'Hide this slide? (That will hide the slide regardless of start/end fields)'),
             ToggleCompositeField::create(
                 'ConfigHD',
-                'Slide Date Settings',
+                'Slide Date Settings (start/end)',
                 [
                     DatetimeField::create('DateOn', 'When would you like to start showing the slide?'),
                     DatetimeField::create('DateOff', 'When would you like to stop showing the slide?'),
