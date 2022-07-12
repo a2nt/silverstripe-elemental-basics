@@ -15,6 +15,7 @@ use Dynamic\FlexSlider\ORM\FlexSlider;
 use SilverStripe\Assets\Image;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\GridField\GridField_ActionMenu;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\Forms\ReadonlyField;
@@ -129,6 +130,7 @@ class SliderElement extends ElementSlideshow
             ));
 
             $config = $grid->getConfig();
+            $config->removeComponentsByType(GridField_ActionMenu::class);
 
             $bulk = new BulkUploader('Image', SlideImage::class, false);
             $bulk
