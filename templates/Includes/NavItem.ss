@@ -7,7 +7,7 @@
         "
         <% if $Children %>data-bs-toggle="hover"<% end_if %>
     >
-        <% include NavItem_link ExtraClass="dropdown-toggle-fl dropdown-toggle-notouch" %>
+        <% include NavItem_link ExtraClass="dropdown-toggle dropdown-toggle-fl dropdown-toggle-notouch" %>
 
         <button
             id="NavItemButton{$ID}"
