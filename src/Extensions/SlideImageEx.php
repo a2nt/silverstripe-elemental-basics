@@ -71,7 +71,8 @@ class SlideImageEx extends DataExtension
             return $img->Link();
         }
 
-        return $img->FocusFill($this->getSlideWidth(), $this->getSlideHeight())->Link();
+        $thumb = $img->FocusFill($this->getSlideWidth(), $this->getSlideHeight());
+        return $thumb ? $thumb->Link() : null;
     }
 
     public function getSlideWidth()
