@@ -35,4 +35,11 @@
             <i class="visually-hidden">YouTube</i>
         </a>
     <% end_if %>
+
+    <% if $Tiktok %>
+        <a href="$Tiktok.LinkURL" target="_blank">
+            <i class="fab fa-tiktok"></i>
+            <i class="sr-only">Tiktok</i>
+        </a>
+    <% end_if %>
 </div>
