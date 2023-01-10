@@ -90,4 +90,10 @@ class TeamMember extends DataObject
     {
         return $this->getField('Company').' | '.$this->getField('FirstName').' '.$this->getField('LastName');
     }
+
+    public function getPage()
+    {
+        $el = \A2nt\ElementalBasics\Elements\TeamMembersElement::get()->first();
+        return $el ? $el->getPage() : false;
+    }
 }
