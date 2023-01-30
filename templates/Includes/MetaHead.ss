@@ -35,6 +35,14 @@ $MetaTags
 <meta property="og:type" content="<% if $OgType %>$OgType<% else %>article<% end_if %>" />
 <%-- /OpenGraph --%>
 
+<%-- Twitter --%>
+<meta name="twitter:card" content="summary">
+<%-- meta name="twitter:creator" content="" --%>
+<meta name="twitter:title" content="<% if $MetaTitle %>{$MetaTitle}<% else %>$Title<% end_if %> - {$SiteConfig.Title}">
+<meta name="twitter:description" content="{$Summary}">
+<meta name="twitter:image" content="{$AbsoluteBaseURL}resources/app/client/dist/img/logo.png">
+<%-- /Twitter --%>
+
 <link rel="canonical" href="{$AbsoluteLink}" />
 
 <link rel="author" type="text/plain" href="{$AbsoluteBaseURL}humans.txt" />
