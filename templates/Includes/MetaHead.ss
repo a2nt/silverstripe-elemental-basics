@@ -26,9 +26,18 @@ $MetaTags
 <% if $MetaDescription %>
     <meta property="og:description" content="{$MetaDescription}" />
 <% end_if %>
-<% if $MetaImage %>
+
+<% if $FeaturedImage %>
+  <meta property="og:image" content="{$FeaturedImage.Link}" />
+  <meta property="twitter:image" content="{$FeaturedImage.Link}" />
+<% else_if $MetaImage %>
     <meta property="og:image" content="{$MetaImage.Link}" />
+    <meta property="twitter:image" content="{$MetaImage.Link}" />
+<% else %>
+  <meta name="og:image" content="{$AbsoluteBaseURL}resources/app/client/dist/img/logo.png" />
+  <meta name="twitter:image" content="{$AbsoluteBaseURL}resources/app/client/dist/img/logo.png" />
 <% end_if %>
+
 <% if $FacebookAppID %>
     <meta property="fb:app_id" content="{$FacebookAppID}" />
 <% end_if %>
