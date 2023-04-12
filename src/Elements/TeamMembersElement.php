@@ -32,6 +32,8 @@ class TeamMembersElement extends BaseElement
 
     public function Members()
     {
-        return TeamMember::get();
+        $members = TeamMember::get();
+        $this->extend('updateMembers', $members);
+        return $members;
     }
 }
