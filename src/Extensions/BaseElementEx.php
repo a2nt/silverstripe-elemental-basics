@@ -95,6 +95,7 @@ class BaseElementEx extends DataExtension
                 $page = $el->getPage();
                 if ($page) {
                     $el->setField('Title', $page->getField('Title'));
+                    $el->setField('ShowTitle', true);
                 }
             }
         }
