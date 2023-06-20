@@ -14,6 +14,8 @@ use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
+use DNADesign\Elemental\Models\ElementalArea;
+use SilverStripe\ORM\DataObject;
 
 /**
  * Class \A2nt\ElementalBasics\Extensions\BaseElementEx
@@ -22,8 +24,6 @@ use SilverStripe\Forms\LiteralField;
  */
 class BaseElementEx extends DataExtension
 {
-
-
     public function updateCMSFields(FieldList $fields)
     {
         $obj = $this->owner;
@@ -38,18 +38,18 @@ class BaseElementEx extends DataExtension
             .'</div>'
         ));
 
-        if($this->owner->ID) {
-	        $tab->push(TreeDropdownField::create(
-		        'MoveElementIDToPage',
-		        'Move an element to page',
-		        SiteTree::class
-	        )->setEmptyString('(select an element to move)'));
+        if ($this->owner->ID) {
+            $tab->push(TreeDropdownField::create(
+                'MoveElementIDToPage',
+                'Move an element to page',
+                SiteTree::class
+            )->setEmptyString('(select an element to move)'));
         }
     }
 
     public static function MoveElementToPage($ID, $moveToID)
     {
-    	$el = BaseElement::get()->byID($ID);
+        $el = BaseElement::get()->byID($ID);
         $page = SiteTree::get()->byID($moveToID);
         if (!$page || !$el) {
             return false;
@@ -62,33 +62,48 @@ class BaseElementEx extends DataExtension
     }
 
     public function updateCMSEditLink(&$link): void
-	{
-	    if (!$this->owner->inlineEditable()) {
-	        $page = $this->owner->getPage();
+    {
+        if (!$this->owner->inlineEditable()) {
+            $page = $this->owner->getPage();
 
-	        if (!$page || $page instanceof SiteTree) {
-	            return;
-	        }
+            if (!$page || $page instanceof SiteTree) {
+                return;
+            }
 
-	        // As non-page DataObject's are managed via GridFields, we have to grab their CMS edit URL
-	        // and replace the trailing /edit/ with a link to the nested ElementalArea edit form
-	        $relationName = $this->owner->getAreaRelationName();
-	        $link = preg_replace(
-	            '/edit\/?$/',
-	            "ItemEditForm/field/{$relationName}/item/{$this->owner->ID}/edit/",
-	            $page->CMSEditLink()
-	        );
-	    }
-	}
+            // As non-page DataObject's are managed via GridFields, we have to grab their CMS edit URL
+            // and replace the trailing /edit/ with a link to the nested ElementalArea edit form
+            $relationName = $this->owner->getAreaRelationName();
+            $link = preg_replace(
+                '/edit\/?$/',
+                "ItemEditForm/field/{$relationName}/item/{$this->owner->ID}/edit/",
+                $page->CMSEditLink()
+            );
+        }
+    }
 
 
     public function onBeforeWrite()
     {
         parent::onBeforeWrite();
+        $el = $this->owner;
 
-		$moveID = $this->owner->getField('MoveElementIDToPage');
-		if($this->owner->ID && $moveID) {
-			self::MoveElementToPage($this->owner->ID, $moveID);
-		}
+        // clone page title to first element title
+        $class = DataObject::getSchema()->hasOneComponent($el, 'Parent');
+        $area = ($el->ParentID) ? DataObject::get_by_id($class, $el->ParentID) : null;
+        if ($area instanceof ElementalArea && $area->exists()) {
+            if ($area->Elements()->count() === 0 && !$el->getField('Title') && $el->hasMethod('getPage')) {
+                $page = $el->getPage();
+                if ($page) {
+                    $el->setField('Title', $page->getField('Title'));
+                }
+            }
+        }
+
+
+
+        $moveID = $el->getField('MoveElementIDToPage');
+        if ($el->ID && $moveID) {
+            self::MoveElementToPage($el->ID, $moveID);
+        }
     }
 }
