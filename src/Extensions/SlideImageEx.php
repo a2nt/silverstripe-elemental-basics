@@ -82,7 +82,9 @@ class SlideImageEx extends DataExtension
             return SliderElement::config()->get('slide_width');
         }
 
-        return $element->getSlideWidth();
+        $w = $element->getSlideWidth();
+        $this->owner->extend('updateSlideWidth', $w);
+        return $w;
     }
 
     public function getSlideHeight()
@@ -92,7 +94,9 @@ class SlideImageEx extends DataExtension
             return SliderElement::config()->get('slide_height');
         }
 
-        return $element->getSlideHeight();
+        $h = $element->getSlideHeight();
+        $this->owner->extend('updateSlideHeight', $h);
+        return $h;
     }
 
     public static function formatBytes($size, $precision = 2)
