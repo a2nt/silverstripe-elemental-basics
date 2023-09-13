@@ -25,7 +25,7 @@
     <% end_if %>
     <% if $Twitter %>
         <a href="$Twitter.LinkURL" title="Twitter" class="tw" rel="noreferrer" target="_blank">
-            <i class="fab fa-twitter"></i>
+            <i class="fa-brands fa-x-twitter"></i>
             <i class="visually-hidden">Twitter</i>
         </a>
     <% end_if %>

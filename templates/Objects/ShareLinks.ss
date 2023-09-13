@@ -4,7 +4,7 @@
         <span class="visually-hidden">Share Facebook</span>
     </a>
     <a target="_blank" href="https://twitter.com/intent/tweet?url={$AbsoluteLink}" rel="noreferrer" class="tw">
-        <i class="fa fab fa-twitter"></i>
+        <i class="fa-brands fa-x-twitter"></i>
         <span class="visually-hidden">Share Twitter</span>
     </a>
 
