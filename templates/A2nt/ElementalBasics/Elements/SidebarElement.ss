@@ -3,8 +3,9 @@
         <% if $Up.ShowTitle %>
             <h2 class="element__title">$Up.Title</h2>
         <% end_if %>
-
-        $SideBarContent
-        $SideBarView
+        <div class="sidebar-content">
+            $SideBarContent
+            $SideBarView
+        </div>
     <% end_if %>
 <% end_with %>
