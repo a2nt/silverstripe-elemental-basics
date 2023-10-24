@@ -87,3 +87,4 @@ $MetaTags
 <meta name="ping" content="/Security/ping" />
 <meta name="api_url" content="{$AbsoluteBaseURL}graphql" />
 <meta name="api_static_domain" content="{$AbsoluteBaseURL}" />
+<meta name="http_method" content="{$HttpMethod}" />
