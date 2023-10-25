@@ -16,6 +16,7 @@ use SilverStripe\Forms\DropdownField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
 use A2nt\ElementalBasics\Elements\AccordionElement;
+use SilverStripe\CMS\Model\SiteTree;
 
 /**
  * Class \A2nt\ElementalBasics\Extensions\ElementRows
@@ -48,7 +49,7 @@ class ElementRows extends DataExtension
         $fields->removeByName(['AvailableGlobally', 'TopPageLocale', 'TopPageID']);
         //$fields->removeByName('SidebarOnly');
 
-	    // move available globaly to main tab
+        // move available globaly to main tab
         $tab = $fields->findOrMakeTab('Root.Main');
         $tab->push(CheckboxField::create('AvailableGlobally'));
         //$tab->push(CheckboxField::create('SidebarOnly', 'Hidden (Sidebar Only)'));
@@ -267,10 +268,10 @@ class ElementRows extends DataExtension
     public function ContainerClass()
     {
         $type = $this->owner->getField('ContainerType');
-        $container_styles = array_keys(self::$container_styles);
+        //$container_styles = array_keys(self::$container_styles);
 
         if (!$type && $this->isRoot()) {
-            $type = \Page::DefaultContainer();
+            $type = Config::inst()->get(SiteTree::class, 'default_container_class');
         }
 
         return $type;
