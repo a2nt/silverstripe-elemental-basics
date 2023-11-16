@@ -28,6 +28,12 @@ class BaseElementEx extends DataExtension
     {
         $obj = $this->owner;
         parent::updateCMSFields($fields);
+
+        $fields->addFieldToTab('Root.Main', LiteralField::create(
+            'AnchorName',
+            'Element Anchor name: #e'.$this->ID
+        ));
+
         $tab = $fields->findOrMakeTab('Root.Settings');
 
         $tab->push(LiteralField::create(
