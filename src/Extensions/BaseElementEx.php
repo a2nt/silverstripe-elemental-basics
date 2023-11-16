@@ -31,7 +31,7 @@ class BaseElementEx extends DataExtension
 
         $fields->addFieldToTab('Root.Main', LiteralField::create(
             'AnchorName',
-            'Element Anchor name: #e'.$this->ID
+            'Element Anchor name: #e'.$obj->ID
         ));
 
         $tab = $fields->findOrMakeTab('Root.Settings');
