@@ -2,17 +2,45 @@
 
 namespace A2nt\ElementalBasics\Controllers;
 
-use DNADesign\Elemental\Models\BaseElement;
 use DNADesign\ElementalUserForms\Control\ElementFormController as ControlElementFormController;
+use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
-use SilverStripe\Core\Injector\Injector;
 use SilverStripe\ORM\ValidationResult;
 
 class ElementFormController extends ControlElementFormController
 {
     private static $allowed_actions = [
+        'Form',
         'finished',
     ];
+
+    public function Form()
+    {
+        $form = parent::Form();
+
+        // Elements actions
+        $current = Controller::curr();
+        $link = $current->Link();
+
+        if (is_a($current, self::class)) {
+            $link = $current->getElement()->getPage()->Link();
+        }
+
+        $link = Director::makeRelative($link);
+        $link = !$link || $link === '/' ? '/home' : $link;
+
+        $form->setFormAction(
+            Controller::join_links(
+                '/',
+                $link,
+                'element',
+                $this->owner->ID,
+                __FUNCTION__
+            )
+        );
+
+        return $form;
+    }
 
     public function finished()
     {
