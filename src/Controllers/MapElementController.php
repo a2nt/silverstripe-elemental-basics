@@ -1,6 +1,5 @@
 <?php
 
-
 namespace A2nt\ElementalBasics\Controllers;
 
 use DNADesign\Elemental\Controllers\ElementController;

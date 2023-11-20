@@ -17,6 +17,10 @@ SilverStripe\UserForms\Model\UserDefinedForm:
   can_be_root: false
   extensions:
     - A2nt\ElementalBasics\Extensions\UserDefinedFormExtension
+
+SilverStripe\Core\Injector\Injector:
+  DNADesign\ElementalUserForms\Control\ElementFormController:
+    class: A2nt\ElementalBasics\Controllers\ElementFormController
 ##################
 
 SilverStripe\CMS\Controllers\ContentController:
