@@ -15,6 +15,7 @@ use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
 use DNADesign\Elemental\Models\ElementalArea;
+use SilverStripe\Control\Director;
 use SilverStripe\ORM\DataObject;
 
 /**
@@ -41,14 +42,14 @@ class BaseElementEx extends DataExtension
         $tab = $fields->findOrMakeTab('Root.Settings');
 
         $tab->push(LiteralField::create(
-            'ClassName',
+            'Type',
             '<div class="form-group field text">'
-            .'<div class="form__field-label">Class</div>'
-            .'<div class="form__field-holder">'.$obj->getField('ClassName').'</div>'
+            .'<div class="form__field-label">Type</div>'
+            .'<div class="form__field-holder">'.(!Director::isLive() ? $obj->getField('ClassName') : $obj->i18n_singular_name()).'</div>'
             .'</div>'
         ));
 
-        if ($this->owner->ID) {
+        if ($obj->ID) {
             $tab->push(TreeDropdownField::create(
                 'MoveElementIDToPage',
                 'Move an element to page',
