@@ -3,7 +3,7 @@
 <% if $Content || $Headline || $CustomTitle || $Description %>
 <div class="container">
     <div class="carousel-caption">
-        <div class="carousel-caption-container typography">
+        <div class="carousel-caption-container">
             <% if $Headline %>
                 <h2 class="carousel-title">
                     $Headline
