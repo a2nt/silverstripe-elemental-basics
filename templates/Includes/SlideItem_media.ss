@@ -12,8 +12,8 @@
         <% if $Image || $ImageURL %>
             <span class="img">
                 <img class="glide__img"
-                    src="{$EmptyImgSrc}"
-                    data-lazy-src="<% if $ImageURL %>$ImageURL<% else %>$Image.FocusFill($SlideWidth,$SlideHeight).URL<% end_if %>"
+                    loading="lazy"
+                    src="<% if $ImageURL %>$ImageURL<% else %>$Image.FocusFill($SlideWidth,$SlideHeight).URL<% end_if %>"
                     alt="<% if $Headline %>$Headline.XML<% end_if %>"
                 />
             </span>
