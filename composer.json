@@ -13,12 +13,16 @@
     }],
     "minimum-stability": "dev",
     "require": {
-        "silverstripe/cms": "*",
+	"silverstripe/cms": "*",
         "dnadesign/silverstripe-elemental": "*",
         "dnadesign/silverstripe-elemental-list": "*",
+        "betterbrief/silverstripe-googlemapfield": "*",
         "symbiote/silverstripe-gridfieldextensions": "*",
         "dynamic/silverstripe-elemental-flexslider": "*",
         "dynamic/silverstripe-elemental-image": "*",
+        "gorriecoe/silverstripe-linkfield": "*",
+        "a2nt/silverstripe-mapboxfield": "dev-master",
+	"lekoala/silverstripe-filepond": "*"
     },
     "autoload": {
         "psr-4": {
