@@ -19,7 +19,6 @@
         "symbiote/silverstripe-gridfieldextensions": "*",
         "dynamic/silverstripe-elemental-flexslider": "*",
         "dynamic/silverstripe-elemental-image": "*",
-        "gorriecoe/silverstripe-linkfield": "*",
 	"lekoala/silverstripe-filepond": "*"
     },
     "autoload": {
