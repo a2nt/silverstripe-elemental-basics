@@ -74,6 +74,10 @@ class BaseElementEx extends DataExtension
 
     public function updateCMSEditLink(&$link): void
     {
+        if(!method_exists($this->owner, 'inlineEditable')) {
+            return;
+        }
+
         if (!$this->owner->inlineEditable()) {
             $page = $this->owner->getPage();
 

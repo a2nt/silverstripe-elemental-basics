@@ -1,4 +1,4 @@
-<% if $Video || $Image %>
+<% if $Video || $Image || $VideoFile %>
 	<% if $VideoFile %>
 		<video autoplay="autoplay" muted="muted" loop="loop">
 			<source src="{$VideoFile.Link}" type="video/mp4" />
