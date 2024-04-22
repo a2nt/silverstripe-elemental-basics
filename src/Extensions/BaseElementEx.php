@@ -31,12 +31,15 @@ class BaseElementEx extends DataExtension
         parent::updateCMSFields($fields);
 
         if ($obj->ID) {
-            $fields->insertBefore(LiteralField::create(
-                'AnchorName',
-                '<div class="field"><div class="form__field-holder">'
-                .'Element Anchor name: <b>#e'.$obj->ID.'</b>'
-                .'</div></div>'
-            ), 'Title');
+            $fields->insertBefore(
+                'Title',
+                LiteralField::create(
+                    'AnchorName',
+                    '<div class="field"><div class="form__field-holder">'
+                    .'Element Anchor name: <b>#e'.$obj->ID.'</b>'
+                    .'</div></div>'
+                )
+            );
         }
 
         $tab = $fields->findOrMakeTab('Root.Settings');
@@ -74,7 +77,7 @@ class BaseElementEx extends DataExtension
 
     public function updateCMSEditLink(&$link): void
     {
-        if(!method_exists($this->owner, 'inlineEditable')) {
+        if (!method_exists($this->owner, 'inlineEditable')) {
             return;
         }
 
