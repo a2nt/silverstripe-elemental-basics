@@ -13,7 +13,7 @@
     }],
     "minimum-stability": "dev",
     "require": {
-        "silverstripe/cms": "*",
+        "silverstripe/cms": "^5",
         "dnadesign/silverstripe-elemental": "*",
         "dnadesign/silverstripe-elemental-list": "*",
         "symbiote/silverstripe-gridfieldextensions": "*",
