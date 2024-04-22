@@ -1,6 +1,6 @@
 <% if $Video || $Image || $VideoFile %>
 	<% if $VideoFile %>
-		<video preload="none" autoplay="autoplay" muted="muted" loop="loop">
+		<video preload="none" autoplay muted loop playsinline>
 			<source src="{$VideoFile.Link}" type="video/mp4" />
 			Your browser does not support the video tag.
 		</video>
