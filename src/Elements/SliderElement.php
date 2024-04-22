@@ -69,9 +69,9 @@ class SliderElement extends ElementSlideshow
 
     private $items;
 
-    public function getType()
+    public function getType(): string
     {
-        return self::$singular_name;
+        return _t(__CLASS__ . '.BlockType', self::$singular_name);
     }
 
     protected function ratioSize($size)

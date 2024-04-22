@@ -28,14 +28,14 @@ class AccordionElement extends ElementList
 
     private static $table_name = 'AccordionElement';
 
-	private static $db = [
-		'OpenFirst' => 'Boolean(0)',
-		'KeepOpenned' => 'Boolean(0)',
-	];
+    private static $db = [
+        'OpenFirst' => 'Boolean(0)',
+        'KeepOpenned' => 'Boolean(0)',
+    ];
 
-    public function getType()
+    public function getType(): string
     {
-        return self::$singular_name;
+        return _t(__CLASS__ . '.BlockType', self::$singular_name);
     }
 
     public function Accordion()
@@ -43,15 +43,15 @@ class AccordionElement extends ElementList
         return $this->Elements()->renderWith(static::class.'_AccordionArea');
     }
 
-	public function getCMSFields()
-	{
-		$fields = parent::getCMSFields();
+    public function getCMSFields()
+    {
+        $fields = parent::getCMSFields();
 
-		$fields->addFieldsToTab('Root.Main', [
-			CheckboxField::create('OpenFirst', 'Open first accordion element on page load'),
-			CheckboxField::create('KeepOpenned', 'Keep elements open'),
-		]);
+        $fields->addFieldsToTab('Root.Main', [
+            CheckboxField::create('OpenFirst', 'Open first accordion element on page load'),
+            CheckboxField::create('KeepOpenned', 'Keep elements open'),
+        ]);
 
-		return $fields;
-	}
+        return $fields;
+    }
 }

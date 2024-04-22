@@ -45,9 +45,9 @@ class InstagramElement extends BaseElement
         'DisplayGallery' => true,
     ];
 
-    public function getType()
+    public function getType(): string
     {
-        return self::$singular_name;
+        return _t(__CLASS__ . '.BlockType', self::$singular_name);
     }
 
     /**
@@ -89,7 +89,7 @@ class InstagramElement extends BaseElement
         foreach ($attributes as $name => $value) {
             if ($value === true) {
                 $value = $name;
-            } else if (is_scalar($value)) {
+            } elseif (is_scalar($value)) {
                 $value = (string) $value;
             } else {
                 $value = json_encode($value);
