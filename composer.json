@@ -19,7 +19,9 @@
         "symbiote/silverstripe-gridfieldextensions": "*",
         "dynamic/silverstripe-elemental-image": "*",
         "gorriecoe/silverstripe-linkfield": "*",
-        "lekoala/silverstripe-filepond": "*"
+        "lekoala/silverstripe-filepond": "*",
+        "symbiote/silverstripe-addressable": "*",
+        "a2nt/silverstripe-mapboxfield": "*"
     },
     "autoload": {
         "psr-4": {
