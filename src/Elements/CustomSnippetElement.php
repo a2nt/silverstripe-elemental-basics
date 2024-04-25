@@ -28,9 +28,9 @@ class CustomSnippetElement extends ElementContent
 
     private static $table_name = 'CustomSnippetElement';
 
-    public function getType()
+    public function getType(): string
     {
-        return self::$singular_name;
+        return _t(__CLASS__ . '.BlockType', self::$singular_name);
     }
 
     public function getCMSFields()
