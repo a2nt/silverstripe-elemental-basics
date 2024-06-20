@@ -132,11 +132,11 @@ class SliderElement extends ElementSlideshow
             $config = $grid->getConfig();
             $config->removeComponentsByType(GridField_ActionMenu::class);
 
-            $bulk = new BulkUploader('Image', SlideImage::class, false);
+            /*$bulk = new BulkUploader('Image', SlideImage::class, false);
             $bulk
                 ->setUfSetup('setFolderName', 'Uploads/SlideImages');
             //->setUfSetup('getValidator.setAllowedExtensions', ['jpg', 'jpeg', 'png', 'gif']);
-            $config->addComponent($bulk);
+            $config->addComponent($bulk);*/
             $config->addComponent(new \Colymba\BulkManager\BulkManager());
 
             $columns = new GridFieldEditableColumns();
