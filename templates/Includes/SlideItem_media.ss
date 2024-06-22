@@ -12,7 +12,7 @@
         <% if $Image || $ImageURL %>
             <span class="img">
                 <img class="glide__img"
-                    loading="lazy"
+                    <% if not $IsFirst %>loading="lazy"<% end_if %>
                     src="<% if $ImageURL %>$ImageURL<% else %>$Image.FocusFill($SlideWidth,$SlideHeight).URL<% end_if %>"
                     alt="<% if $Headline %>$Headline.XML<% end_if %>"
                     width="1920"
