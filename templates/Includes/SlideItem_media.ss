@@ -15,6 +15,8 @@
                     loading="lazy"
                     src="<% if $ImageURL %>$ImageURL<% else %>$Image.FocusFill($SlideWidth,$SlideHeight).URL<% end_if %>"
                     alt="<% if $Headline %>$Headline.XML<% end_if %>"
+                    width="1920"
+                    height="410"
                 />
             </span>
         <% end_if %>
