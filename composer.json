@@ -21,7 +21,8 @@
         "gorriecoe/silverstripe-linkfield": "*",
         "lekoala/silverstripe-filepond": "*",
         "symbiote/silverstripe-addressable": "*",
-        "a2nt/silverstripe-mapboxfield": "*"
+        "a2nt/silverstripe-mapboxfield": "*",
+        "lekoala/silverstripe-cms-actions": "*"
     },
     "autoload": {
         "psr-4": {

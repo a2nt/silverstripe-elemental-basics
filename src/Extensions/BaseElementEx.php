@@ -15,6 +15,9 @@ use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
 use DNADesign\Elemental\Models\ElementalArea;
+use LeKoala\CmsActions\CmsInlineFormAction;
+use LeKoala\CmsActions\HasPrevNextUtils;
+use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\ORM\DataObject;
 
@@ -124,5 +127,98 @@ class BaseElementEx extends DataExtension
         if ($el->ID && $moveID) {
             self::MoveElementToPage($el->ID, $moveID);
         }
+    }
+
+    public function onAfterUpdateCMSActions(FieldList $fields)
+    {
+        self::addPrevNextUtils($this->owner, $fields);
+    }
+
+    public function PrevRecord()
+    {
+        $obj = $this->owner;
+        $parent = $obj->Parent();
+        if (!$parent) {
+            return;
+        }
+
+        $els = $parent->Elements();
+        if (!$els) {
+            return;
+        }
+
+        return $els->filter('Sort:LessThan', $obj->Sort)->first();
+    }
+
+    public function NextRecord()
+    {
+        $obj = $this->owner;
+        $parent = $obj->Parent();
+        if (!$parent) {
+            return;
+        }
+
+        $els = $parent->Elements();
+        if (!$els) {
+            return;
+        }
+
+        return $els->filter('Sort:GreaterThan', $obj->Sort)->first();
+    }
+
+    /**
+     * @param FieldList $utils
+     * @return FieldList
+     */
+    public static function addPrevNextUtils($obj, FieldList $utils)
+    {
+        $controller = Controller::curr();
+        $request = $controller->getRequest();
+        $url = rtrim($request->getURL(), '/') . '/';
+
+        $query = $_GET;
+        if (!empty($query)) {
+            $url .= '?' . http_build_query($query);
+        }
+
+        $routeParams = $request->routeParams();
+        $recordClass = get_class($obj);
+
+        $getPreviousRecordID = $routeParams['cmsactions'][$recordClass]['PreviousRecordID'] ?? $request->param('PreviousRecordID');
+        $getNextRecordID = $routeParams['cmsactions'][$recordClass]['NextRecordID'] ?? $request->param('NextRecordID');
+
+        $search = sprintf('/%d/', $obj->ID);
+        $replaceStr = '/%d/';
+        $PrevRecordLink = $routeParams['cmsactions'][$recordClass]['PrevRecordLink'] ?? null;
+        $NextRecordLink = $routeParams['cmsactions'][$recordClass]['NextRecordLink'] ?? null;
+        if (!$PrevRecordLink) {
+            $PrevRecordLink = str_replace($search, sprintf($replaceStr, $getPreviousRecordID), $url);
+        }
+        if (!$NextRecordLink) {
+            $NextRecordLink = str_replace($search, sprintf($replaceStr, $getNextRecordID), $url);
+        }
+
+        if ($obj->ID && $getNextRecordID) {
+            $utils->unshift(
+                $NextBtnLink = new CmsInlineFormAction(
+                    'NextBtnLink',
+                    _t('HasPrevNextUtils.Next', 'Next') . ' >',
+                    'btn-secondary'
+                )
+            );
+            $NextBtnLink->setLink($NextRecordLink);
+        }
+        if ($obj->ID && $getPreviousRecordID) {
+            $utils->unshift(
+                $PrevBtnLink = new CmsInlineFormAction(
+                    'PrevBtnLink',
+                    '< ' . _t('HasPrevNextUtils.Previous', 'Previous'),
+                    'btn-secondary'
+                )
+            );
+            $PrevBtnLink->setLink($PrevRecordLink);
+        }
+
+        return $utils;
     }
 }
